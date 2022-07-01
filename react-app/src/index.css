@@ -1,11 +1,29 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px;
+}
+
+nav {
+    background-color: lightslategray;
+    padding: 20px;
+}
+
 nav > ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 0px;
 }
 
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 
@@ -13,4 +31,14 @@ li {
 #agenda-page {
     display: flex;
     flex-direction: column;
+    padding: 40px;
+}
+
+#agenda-page > a {
+    color: black;
+    margin-bottom: 8px;
+}
+
+#agenda-page > a:hover {
+    font-weight: bold;
 }

@@ -25,7 +25,7 @@ const Home = () => {
 
     return (
         <div id='agenda-page'>
-            AGENDA
+            <h1>AGENDA</h1>
             {topics.map((topic, idx) => {
                 return (
                     <Link to={`/topics/${topic.id}`}>{topic.title}</Link>
