@@ -17,15 +17,18 @@ const Topic = () => {
     const topics = useSelector(state => {
         return Object.values(state.topics)
     });
-    const currentTopic = topics[topicId - 1];
+    let currentTopic = undefined;
     let prevTopic = undefined;
-    if (topicId - 2 >= 0) {
-        prevTopic = topics[topicId - 2];
-    };
     let nextTopic = undefined;
-    if (topics[topicId]) {
-        nextTopic = topics[topicId];
-    };
+    topics.forEach((topic) => {
+        if (topic.id == Number(topicId)) {
+            currentTopic = topic;
+        } else if (topic.id == Number(topicId) - 1) {
+            prevTopic = topic;
+        } else if (topic.id == Number(topicId) + 1) {
+            nextTopic = topic;
+        };
+    });
 
     useEffect(() => {
         dispatch(loadAllTopics())
