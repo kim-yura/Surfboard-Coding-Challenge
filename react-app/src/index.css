@@ -149,3 +149,12 @@ a:hover {
 textarea {
     resize: vertical;
 }
+
+#delete-button {
+    margin-top: 4px;
+}
+
+#delete-button:hover {
+    cursor: pointer;
+    font-weight: bold;
+}

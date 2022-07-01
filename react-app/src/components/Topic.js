@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
-import { loadAllTopics } from '../store/topics';
+import { deleteTopic, loadAllTopics } from '../store/topics';
 
 const Topic = () => {
     window.scrollTo(0, 0);
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const { topicId } = useParams();
 
     const sessionUser = useSelector(state => {
@@ -30,6 +31,15 @@ const Topic = () => {
         };
     });
 
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        const topic = {
+            id: Number(topicId)
+        };
+        await dispatch(deleteTopic(topic));
+        history.push('/');
+    }
+
     useEffect(() => {
         dispatch(loadAllTopics())
     }, []);
@@ -50,7 +60,7 @@ const Topic = () => {
             {sessionUser ?
             <div id='topic-options'>
                 <Link to={`/topics/${topicId}/edit`}>Edit Topic</Link>
-                <Link to={`/topics/${topicId}/delete`}>Delete Topic</Link>
+                <p id='delete-button' onClick={handleDelete}>Delete Topic</p>
             </div>
             : ''}
             <div id='topic-navigation'>

@@ -24,8 +24,6 @@ const Create = () => {
         window.scrollTo(0, 0);
         e.preventDefault();
 
-        // ERROR HANDLING HERE
-
         const newTopic = {
             title,
             estimate,

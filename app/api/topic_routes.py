@@ -6,7 +6,7 @@ topic_routes = Blueprint('topics', __name__)
 
 @topic_routes.route('/')
 def get_topics():
-    topics = Topic.query.all()
+    topics = Topic.query.order_by((Topic.id).asc()).all()
     return {'topics': [topic.to_dict() for topic in topics]}
 
 @topic_routes.route('/', methods=['POST'])

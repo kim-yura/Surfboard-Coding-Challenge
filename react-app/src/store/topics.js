@@ -86,7 +86,7 @@ const editTopicAction = (topic) => ({
 // -------------------- DELETE -------------------- //
 
 export const deleteTopic = (topicId) => async (dispatch) => {
-    const response = await csrfFetch('/api/topics', {
+    const response = await csrfFetch('/api/topics/', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
