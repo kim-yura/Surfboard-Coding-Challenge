@@ -18,17 +18,21 @@ const NavBar = () => {
     <nav>
       <ul>
         <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
+          <NavLink className='nav-link' to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
         </li>
         {sessionUser ?
-          <li id='logout-button' onClick={onLogout}>
-            Logout
-          </li> :
+          <>
+            <li  className='nav-link'>Logged in as Demo Presenter</li>
+            <li  className='nav-link' id='logout-button' onClick={onLogout}>
+              Logout
+            </li>
+          </>
+          :
           <>
             <li>
-              <NavLink to='/login' exact={true} activeClassName='active'>
+              <NavLink  className='nav-link' to='/login' exact={true} activeClassName='active'>
                 Login
               </NavLink>
             </li>

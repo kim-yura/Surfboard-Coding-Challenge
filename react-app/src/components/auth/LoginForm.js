@@ -26,19 +26,25 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const demoLogin = async () => {
+    const email = 'test@example.com';
+    const password = 'pw';
+    const data = await dispatch(login(email, password));
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
 
   return (
-    <form onSubmit={onLogin}>
+    <form id='login-form' onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
+        {/* <label htmlFor='email'>Email</label> */}
         <input
           name='email'
           type='text'
@@ -48,7 +54,7 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
+        {/* <label htmlFor='password'>Password</label> */}
         <input
           name='password'
           type='password'
@@ -56,8 +62,9 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+      <button type='submit'>Login</button>
+      <button type='button' onClick={demoLogin}>Demo Login</button>
     </form>
   );
 };
