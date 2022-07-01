@@ -16,6 +16,7 @@ nav > ul {
     flex-direction: row;
     justify-content: space-between;
     margin: 0px;
+    padding-right: 40px;
 }
 
 li {
@@ -28,6 +29,11 @@ a {
 }
 
 a:hover {
+    font-weight: bold;
+}
+
+#logout-button:hover {
+    cursor: pointer;
     font-weight: bold;
 }
 

@@ -1,13 +1,18 @@
 
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import { logout } from '../store/session';
 
 const NavBar = () => {
   const sessionUser = useSelector(state => {
     return state.session.user || ''
   });
+
+  const dispatch = useDispatch();
+  const onLogout = async (e) => {
+    await dispatch(logout());
+  };
 
   return (
     <nav>
@@ -18,18 +23,13 @@ const NavBar = () => {
           </NavLink>
         </li>
         {sessionUser ?
-          <li>
-            <LogoutButton />
+          <li id='logout-button' onClick={onLogout}>
+            Logout
           </li> :
           <>
             <li>
               <NavLink to='/login' exact={true} activeClassName='active'>
                 Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to='/sign-up' exact={true} activeClassName='active'>
-                Sign Up
               </NavLink>
             </li>
           </>
