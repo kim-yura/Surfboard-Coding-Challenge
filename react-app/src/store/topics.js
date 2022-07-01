@@ -112,9 +112,7 @@ const topicReducer = (state = {}, action) => {
 
     switch (action.type) {
         case LOAD_ALL_TOPICS:
-            action.allTopics.forEach(topic => {
-                newState[topic.id] = topic;
-            });
+            newState = action.allTopics.topics;
             return newState;
         case CREATE_TOPIC:
         case EDIT_TOPIC:
