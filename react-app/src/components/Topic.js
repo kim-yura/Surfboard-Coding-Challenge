@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { loadAllTopics } from '../store/topics';
 
-import Topic from './Topic';
-
-const Home = () => {
+const Topic = () => {
     window.scrollTo(0, 0);
 
     const dispatch = useDispatch();
+    const { topicId } = useParams();
 
     const sessionUser = useSelector(state => {
         return state.session.user || ''
@@ -18,21 +17,24 @@ const Home = () => {
     const topics = useSelector(state => {
         return Object.values(state.topics)
     });
+    let currentTopic;
+    topics.forEach((topic) => {
+        if (topic.id == topicId) {
+            currentTopic = topic;
+        };
+    });
 
     useEffect(() => {
         dispatch(loadAllTopics())
     }, []);
 
     return (
-        <div id='agenda-page'>
-            AGENDA
-            {topics.map((topic, idx) => {
-                return (
-                    <Link to={`/topics/${topic.id}`}>{topic.title}</Link>
-                )
-            })}
+        <div id='topic-view'>
+            {currentTopic?.title}
+            {currentTopic?.time_estimate}
+            {currentTopic?.description}
         </div>
     )
 };
 
-export default Home;
+export default Topic;

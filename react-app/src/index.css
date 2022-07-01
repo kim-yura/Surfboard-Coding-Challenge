@@ -7,3 +7,10 @@ nav > ul {
 li {
     list-style: none;
 }
+
+
+
+#agenda-page {
+    display: flex;
+    flex-direction: column;
+}
