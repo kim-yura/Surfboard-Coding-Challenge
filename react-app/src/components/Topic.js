@@ -17,39 +17,49 @@ const Topic = () => {
     const topics = useSelector(state => {
         return Object.values(state.topics)
     });
-    let currentTopic;
+    console.log(topics)
+    const currentTopic = topics[topicId - 1];
     let prevTopic = undefined;
+    if (topicId - 2 >= 0) {
+        prevTopic = topics[topicId - 2];
+    };
     let nextTopic = undefined;
-    topics.forEach((topic) => {
-        if (topic.id == topicId) {
-            currentTopic = topic;
-        } else if (topic.id == Number(topicId) - 1) {
-            prevTopic = topic;
-        } else if (topic.id = Number(topicId) + 1) {
-            nextTopic = topic;
-        }
-    });
+    if (topics[topicId]) {
+        nextTopic = topics[topicId];
+    };
 
     useEffect(() => {
         dispatch(loadAllTopics())
     }, []);
 
     return (
-        <>
-            <div id='topic-view'>
-                {currentTopic?.title}
-                {currentTopic?.time_estimate}
-                {currentTopic?.description}
+        <div id='topic-view'>
+            <div id='topic-details'>
+                <h2>
+                    {currentTopic?.title}
+                </h2>
+                <p className='topic-time'>
+                    {currentTopic?.time_estimate}
+                </p>
+                <p>
+                    {currentTopic?.description}
+                </p>
             </div>
+            {sessionUser ?
+            <div id='topic-options'>
+                <Link to={`/topics/${topicId}/edit`}>Edit Topic</Link>
+                <Link to={`/topics/${topicId}/delete`}>Delete Topic</Link>
+            </div>
+            : ''}
             <div id='topic-navigation'>
-                <div>
+                <div id='topic-navigation-left'>
                     {prevTopic ?
                         <>
                             <p>Previous Topic:</p>
                             <Link to={`/topics/${prevTopic.id}`}>{prevTopic.title}</Link>
                         </> : ''}
                 </div>
-                <div>
+                <div id='topic-navigation-right'>
                     {nextTopic ?
                         <>
                             <p>Next Topic:</p>
@@ -57,7 +67,7 @@ const Topic = () => {
                         </> : ''}
                 </div>
             </div>
-        </>
+        </div>
     )
 };
 

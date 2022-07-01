@@ -24,8 +24,12 @@ li {
 
 a {
     text-decoration: none;
+    color: black;
 }
 
+a:hover {
+    font-weight: bold;
+}
 
 
 #agenda-page {
@@ -41,4 +45,47 @@ a {
 
 #agenda-page > a:hover {
     font-weight: bold;
+}
+
+#topic-view {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+#topic-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.topic-time {
+    color: gray;
+    margin-top: -8px;
+    margin-bottom: 16px;
+}
+
+#topic-options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+}
+
+#topic-options > a {
+    margin-bottom: 8px;
+}
+
+#topic-navigation {
+    position: absolute;
+    bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90vh;
+}
+
+#topic-navigation-left {
+    text-align: left;
+}
+
+#topic-navigation-right {
+    text-align: right;
 }

@@ -3,16 +3,19 @@ from app.models import db, Topic
 
 def seed_topics():
     topic_1 = Topic(
+        id=1,
         title='Topic 1: Intro to React',
         time_estimate='1 hour',
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     )
     topic_2=Topic(
+        id=2,
         title='Topic 2: Intro to Python',
         time_estimate='45 minutes',
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
     )
     topic_3=Topic(
+        id=3,
         title='Topic 3: What is Full Stack Development?',
         time_estimate='2 hours',
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
