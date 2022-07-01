@@ -24,15 +24,16 @@ const NavBar = () => {
         </li>
         {sessionUser ?
           <>
-            <li  className='nav-link'>Logged in as Demo Presenter</li>
-            <li  className='nav-link' id='logout-button' onClick={onLogout}>
+            <li className='nav-link'>Logged in as Demo Presenter</li>
+            <NavLink className='nav-link' to='/create' exact={true}>Create New Topic</NavLink>
+            <li className='nav-link' id='logout-button' onClick={onLogout}>
               Logout
             </li>
           </>
           :
           <>
             <li>
-              <NavLink  className='nav-link' to='/login' exact={true} activeClassName='active'>
+              <NavLink className='nav-link' to='/login' exact={true} activeClassName='active'>
                 Login
               </NavLink>
             </li>

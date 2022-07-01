@@ -17,7 +17,6 @@ const Topic = () => {
     const topics = useSelector(state => {
         return Object.values(state.topics)
     });
-    console.log(topics)
     const currentTopic = topics[topicId - 1];
     let prevTopic = undefined;
     if (topicId - 2 >= 0) {
