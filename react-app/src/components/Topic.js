@@ -38,7 +38,7 @@ const Topic = () => {
                     {currentTopic?.title}
                 </h2>
                 <p className='topic-time'>
-                    {currentTopic?.time_estimate}
+                    {currentTopic?.estimate}
                 </p>
                 <p>
                     {currentTopic?.description}

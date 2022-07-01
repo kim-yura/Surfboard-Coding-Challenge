@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('topics',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.Text(), nullable=False),
-    sa.Column('time_estimate', sa.String(length=20), nullable=True),
+    sa.Column('estimate', sa.String(length=20), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )

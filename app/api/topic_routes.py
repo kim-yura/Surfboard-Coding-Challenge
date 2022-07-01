@@ -13,7 +13,7 @@ def get_topics():
 def post_topic():
     topic = Topic(
         title = request.json['title'],
-        time_estimate = request.json['time_estimate'],
+        estimate = request.json['estimate'],
         description = request.json['description']
     )
     try:
@@ -27,7 +27,7 @@ def post_topic():
 def put_topic():
     db.session.query(Topic).filter(Topic.id == request.json['id']).update({
         'title': request.json['title'],
-        'time_estimate': request.json['time_estimate'],
+        'estimate': request.json['estimate'],
         'description': request.json['description']
     }, synchronize_session = 'fetch')
     db.session.commit()

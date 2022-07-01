@@ -15,7 +15,7 @@ const Create = () => {
     });
 
     const [title, setTitle] = useState('');
-    const [timeEstimate, setTimeEstimate] = useState('');
+    const [estimate, setestimate] = useState('');
     const [description, setDescription] = useState('');
 
     const [validationErrors, setValidationErrors] = useState([]);
@@ -28,7 +28,7 @@ const Create = () => {
 
         const newTopic = {
             title,
-            timeEstimate,
+            estimate,
             description
         };
 
@@ -36,8 +36,8 @@ const Create = () => {
 
         if (!sessionUser) errors.push('You must be logged in as a presenter to submit a topic.');
         if (!title) errors.push('Please enter a title.');
-        if (timeEstimate) {
-            if (timeEstimate.length > 20) {
+        if (estimate) {
+            if (estimate.length > 20) {
                 errors.push('Time estimate cannot be longer than 20 characters.');
             }
         };
@@ -51,7 +51,7 @@ const Create = () => {
     };
 
     return (
-        <div id='new-topic-form'>
+        <div id='form-view'>
             <form onSubmit={handleSubmit}>
 
                 {validationErrors.length ?
@@ -67,6 +67,28 @@ const Create = () => {
 
                 <div id='form'>
                     <h2>Submit a New Topic</h2>
+                    <input
+                        onChange={(e) => setTitle(e.target.value)}
+                        value={title}
+                        id='title'
+                        type='text'
+                        placeholder='Enter a title for your Topic'
+                    />
+                    <input
+                        onChange={(e) => setestimate(e.target.value)}
+                        value={estimate}
+                        id='estimate'
+                        type='text'
+                        placeholder='Enter a time estimate'
+                    />
+                    <textarea
+                        onChange={(e) => setDescription(e.target.value)}
+                        value={description}
+                        id='description'
+                        type='text'
+                        placeholder='Enter a description'
+                    />
+                    <button onClick={handleSubmit}>Submit</button>
                 </div>
 
             </form>

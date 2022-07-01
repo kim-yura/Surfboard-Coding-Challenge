@@ -23,7 +23,7 @@ const loadAllTopicsAction = (allTopics) => ({
 
 export const createTopic = ({
     title,
-    timeEstimate,
+    estimate,
     description
 }) => async (dispatch) => {
     const response = await csrfFetch('/api/topics/', {
@@ -33,7 +33,7 @@ export const createTopic = ({
         },
         body: JSON.stringify({
             title,
-            time_estimate: timeEstimate,
+            estimate: estimate,
             description,
         })
     });
@@ -55,7 +55,7 @@ const createTopicAction = (topic) => ({
 export const editTopic = ({
     id,
     title,
-    timeEstimate,
+    estimate,
     description
 }) => async (dispatch) => {
     const response = await csrfFetch('/api/topics/', {
@@ -66,7 +66,7 @@ export const editTopic = ({
         body: JSON.stringify({
             id,
             title,
-            time_estimate: timeEstimate,
+            estimate: estimate,
             description,
         })
     });
