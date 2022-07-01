@@ -20,20 +20,26 @@ const Edit = () => {
     });
     let currentTopic;
     topics.forEach((topic) => {
-        console.log(topics)
         if (topic.id == Number(topicId)) {
             currentTopic = topic;
-            console.log(currentTopic)
         };
     });
 
     useEffect(() => {
-        dispatch(loadAllTopics())
+        dispatch(loadAllTopics());
     }, []);
+
+    useEffect(() => {
+        if (currentTopic) {
+            setTitle(currentTopic.title);
+            setEstimate(currentTopic.estimate);
+            setDescription(currentTopic.description);
+        }
+    }, [currentTopic]);
     // const currentTopic = topics[topicId - 1];
 
     const [title, setTitle] = useState('');
-    const [estimate, setestimate] = useState('');
+    const [estimate, setEstimate] = useState('');
     const [description, setDescription] = useState('');
 
     const [validationErrors, setValidationErrors] = useState([]);
@@ -45,6 +51,7 @@ const Edit = () => {
         // ERROR HANDLING HERE
 
         const newTopic = {
+            id: topicId,
             title,
             estimate,
             description
@@ -63,8 +70,8 @@ const Edit = () => {
         setValidationErrors(errors);
 
         if (!errors.length) {
-            // const submittedTopic = await dispatch(createTopic(newTopic));
-            // history.push(`/topics/${submittedTopic.id}`);
+            const topic = await dispatch(editTopic(newTopic));
+            history.push(`/topics/${topic.id}`);
         };
     };
 
@@ -93,7 +100,7 @@ const Edit = () => {
                         placeholder='Enter a title for your Topic'
                     />
                     <input
-                        onChange={(e) => setestimate(e.target.value)}
+                        onChange={(e) => setEstimate(e.target.value)}
                         value={estimate}
                         id='estimate'
                         type='text'

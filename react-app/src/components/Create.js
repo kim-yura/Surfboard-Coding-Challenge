@@ -15,7 +15,7 @@ const Create = () => {
     });
 
     const [title, setTitle] = useState('');
-    const [estimate, setestimate] = useState('');
+    const [estimate, setEstimate] = useState('');
     const [description, setDescription] = useState('');
 
     const [validationErrors, setValidationErrors] = useState([]);
@@ -75,7 +75,7 @@ const Create = () => {
                         placeholder='Enter a title for your Topic'
                     />
                     <input
-                        onChange={(e) => setestimate(e.target.value)}
+                        onChange={(e) => setEstimate(e.target.value)}
                         value={estimate}
                         id='estimate'
                         type='text'
